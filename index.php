@@ -34,6 +34,7 @@
       </div>
       <div id="noteOverlay" class="hide">
         <a href="#" class="cancelButton ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>
+        <p class="enterNote error">*Note must not be empty.</p>
         <textarea class="newNote"></textarea>
         <a id="saveNote" data-role="button">Save</a>
         <a id="deleteNote" data-role="button">Delete</a>

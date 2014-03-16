@@ -4,9 +4,14 @@
   $conn = startConn();
 
   $note = $_REQUEST['note'];
-  $id = $_REQUEST['id'];
+  if(isset($_REQUEST['id'])) $id = $_REQUEST['id'];
 
   $note = $conn->real_escape_string($note);
+
+  if(empty($note)){
+    closeConn($conn);
+    return;
+  }
 
   if (!empty($id)) {
     $sql = "UPDATE Notes SET note='$note' WHERE ID=$id";
