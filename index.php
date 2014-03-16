@@ -21,7 +21,7 @@
       </div>
       <div id="noteList">
         <?php if (!empty($notes)): ?>
-          <ul data-role="listview">
+          <ul data-role="listview" id="allNotes">
               <?php foreach($notes as $note): ?>
               <li class="note ui-li-static ui-body-inherit" data-id="<?php echo $note['id']; ?>"><a><span class="noteTxt"><?php echo $note['note']; ?></span></a></li>
               <?php endforeach; ?>

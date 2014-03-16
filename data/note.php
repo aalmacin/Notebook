@@ -16,7 +16,7 @@
   function getNotes() {
     $conn = startConn();
 
-    $sql = "SELECT * FROM Notes WHERE userID=1";
+    $sql = "SELECT * FROM Notes WHERE userID=1 ORDER BY created DESC";
 
     $result = $conn->query($sql);
 

@@ -6,6 +6,19 @@ $(document).ready(function() {
     txtArea.val("");
     txtArea.data('id', '');
     $('.enterNote.error').hide();
+    updateNoteList();
+  }
+
+  function updateNoteList() {
+    var allNotes = $('#allNotes');
+    allNotes.empty();
+    $.getJSON('api/getNotes.php', function(notes) {
+      $.each(notes, function(i, note) {
+        var fullElement = "<li class='note ui-li-static ui-body-inherit ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c' data-id='" + note.id + "' data-corners='false' data-shadow='false' data-iconshadow='true' data-wrapperels='div' data-icon='arrow-r' data-iconpos='right' data-theme='c'><div class='ui-btn-inner ui-li'><div class='ui-btn-text'><a class='ui-link-inherit'><span class='noteTxt'>" + note.note + "</span></a></div><span class='ui-icon ui-icon-arrow-r ui-icon-shadow'>&nbsp;</span></div></li>";
+        allNotes.append(fullElement);
+      });
+    });
+
   }
 
   $('#addNoteButton .addNote').click(function() {
@@ -17,7 +30,7 @@ $(document).ready(function() {
     closeNote();
   });
 
-  $('.note').click(function() {
+  $(document).on('click', '.note', function() {
     $("#noteOverlay").show();
     var txtArea = $("#noteOverlay .newNote");
     txtArea.data('id', $(this).data("id"));
