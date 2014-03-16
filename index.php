@@ -1,3 +1,7 @@
+<?php
+  include_once('data/note.php');
+  $notes = getNotes();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,12 +20,17 @@
         <a class="addNote" data-role="button" data-icon="plus">Add Note</a>
       </div>
       <div id="noteList">
-        <ul data-role="listview">
-          <li class="note ui-li-static ui-body-inherit" data-id="1"><a><span class="noteTxt">Jerome</span></a></li>
-          <li class="note ui-li-static ui-body-inherit" data-id="2"><a><span class="noteTxt">John</span></a></li>
-          <li class="note ui-li-static ui-body-inherit" data-id="3"><a><span class="noteTxt">Aldrin</span></a></li>
-          <li class="note ui-li-static ui-body-inherit" data-id="4"><a><span class="noteTxt">Alexis</span></a></li>
-        </ul>
+        <?php if (!empty($notes)): ?>
+          <ul data-role="listview">
+              <?php foreach($notes as $note): ?>
+              <li class="note ui-li-static ui-body-inherit" data-id="<?php echo $note['id']; ?>"><a><span class="noteTxt"><?php echo $note['note']; ?></span></a></li>
+              <?php endforeach; ?>
+          </ul>
+        <?php else: ?>
+          <div class="noNotes">
+            <p>There are no notes saved in the database.</p>
+          </div>
+        <?php endif; ?>
       </div>
       <div id="noteOverlay" class="hide">
         <a href="#" class="cancelButton ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all"></a>
