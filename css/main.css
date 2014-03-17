@@ -16,6 +16,17 @@
   margin: 0 auto;
   padding: 5%;
 }
+#main #logoutUser {
+  text-align: right;
+  padding: 10px 10px;
+}
+#main #logoutUser a {
+  position: relative;
+  right: 30px;
+}
+#main #registrationForm {
+  display: none;
+}
 #main #noteOverlay {
   position: absolute;
   top: 0;

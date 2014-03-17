@@ -39,24 +39,25 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <div id="main">
+    <div data-role="page" id="main">
       <div id="loginForm">
         <h3 class="ui-bar ui-bar-a ui-corner-all">Login</h3>
         <div class="ui-body">
-          <form name="login" method="post">
+          <form name="login" data-ajax="false" method="post">
             <label for="username">Username</label>
             <input id="loginUsername" type="text" name="loginUsername" />
             <label for="password">Password</label>
             <input id="loginPassword" type="password" name="loginPassword" />
             <input type="hidden" name="type" value="login" />
-            <input type="submit" value="Login" />
+            <input type="submit" value="Login" rel="external" data-ajax="false" />
           </form>
+          <a href='#' id="registrationLink">Click for registration form</a>
         </div>
       </div>
       <div id="registrationForm">
         <h3 class="ui-bar ui-bar-a ui-corner-all">Register</h3>
         <div class="ui-body">
-          <form name="registration" method="post">
+          <form name="registration" data-ajax="false" method="post">
             <label for="username">Username</label>
             <input id="registerUsername" type="text" name="registerUsername" />
             <label for="password">Password</label>
@@ -64,8 +65,9 @@
             <label for="password">Confirm Password</label>
             <input id="registerConfPassword" type="password" name="registerConfPassword" />
             <input type="hidden" name="type" value="register" />
-            <input id="signUpBtn" type="submit" value="Sign up" />
+            <input id="signUpBtn" type="submit"  rel="external" data-ajax="false" value="Sign up" />
           </form>
+          <a href='#' id="loginLink">Click for login form</a>
         </div>
       </div>
     </div>

@@ -1,5 +1,17 @@
 $(document).on('pageshow', '#main', function() {
 
+  $("#registrationLink").on('click', function() {
+    $("#loginForm").hide();
+    $("#registrationForm").show();
+    return false;
+  });
+
+  $("#loginLink").on('click', function() {
+    $("#registrationForm").hide();
+    $("#loginForm").show();
+    return false;
+  });
+
   function closeNote() {
     $("#noteOverlay").hide();
     var txtArea = $("#noteOverlay .newNote");

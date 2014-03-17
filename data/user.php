@@ -46,7 +46,8 @@
     }
   }
 
-  function logoutUser($username, $password) {
+  function logoutUser() {
+    session_start();
     session_destroy();
   }
 

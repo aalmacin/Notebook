@@ -21,6 +21,9 @@
   </head>
   <body>
     <div data-role="page" id="main">
+      <div id="logoutUser">
+        <a href="logout.php"  data-ajax="false">Logout</a>
+      </div>
       <div id="addNoteButton">
         <a class="addNote" data-role="button" data-icon="plus">Add Note</a>
       </div>
