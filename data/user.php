@@ -36,10 +36,13 @@
   }
 
   function loginUser($username, $password) {
+    $conn = startConn();
+    $password = $conn->real_escape_string($password);
     foreach(getUsers() as $user) {
       if($user['Username'] == $username && $user['Password'] == sha1($password)) {
         session_start();
         $_SESSION['userId'] = $user['id'];
+        header('Location: notebook.php');
       }
     }
   }
