@@ -1,5 +1,6 @@
 <?php
   include_once('../data/note.php');
+  session_start();
 
   $conn = startConn();
 
@@ -16,7 +17,8 @@
   if (!empty($id)) {
     $sql = "UPDATE Notes SET note='$note' WHERE ID=$id";
   } else {
-    $sql = "INSERT INTO Notes(`note`, `userID`) VALUES ('$note', 1)";
+    $userId = $_SESSION['userId'];
+    $sql = "INSERT INTO Notes(`note`, `userID`) VALUES ('$note', $userId)";
   }
   if($conn->query($sql) === false) {
     trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);

@@ -1,6 +1,7 @@
 <?php
   include_once('data/note.php');
   session_start();
+
   if(!isset($_SESSION['userId'])) {
     header('Location: index.php');
   }
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <div id="main">
+    <div data-role="page" id="main">
       <div id="addNoteButton">
         <a class="addNote" data-role="button" data-icon="plus">Add Note</a>
       </div>
