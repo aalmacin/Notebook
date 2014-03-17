@@ -37,7 +37,6 @@
 
   function loginUser($username, $password) {
     $conn = startConn();
-    $password = $conn->real_escape_string($password);
     foreach(getUsers() as $user) {
       if($user['Username'] == $username && $user['Password'] == sha1($password)) {
         session_start();
@@ -52,6 +51,8 @@
   }
 
   function register($username, $password) {
+    $oldUsername = $username;
+    $oldPassword = $password;
     $unique = true;
     foreach(getUsers() as $user) {
       if($user['Username'] == $username) $unique = false;
@@ -63,7 +64,7 @@
       $password = $conn->real_escape_string($password);
       $sql = "INSERT INTO User(Username, Password) VALUES ('$username', '$password')";
       $conn->query($sql);
-      loginUser($username, $password);
+      loginUser($oldUsername, $oldPassword);
       closeConn($conn);
     }
   }

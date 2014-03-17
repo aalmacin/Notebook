@@ -14,23 +14,27 @@
   }
 
   function getNotes() {
-    $conn = startConn();
-
-    $sql = "SELECT * FROM Notes WHERE userID=1 ORDER BY created DESC";
-
-    $result = $conn->query($sql);
-
-    if (!$result) {
-      error_log("Query failed: %s\n", $conn->error);
-      exit;
-    }
-
     $notes = array();
-    while($note = $result->fetch_assoc()) {
-      $notes[]=$note;
-    }
+    $conn = startConn();
+    session_start();
+    if(isset($_SESSION['userId'])) {
+      $userId = $_SESSION['userId'];
 
-    $result->close();
+      $sql = "SELECT * FROM Notes WHERE userID=$userId ORDER BY created DESC";
+
+      $result = $conn->query($sql);
+
+      if (!$result) {
+        printf("Query failed: %s\n", $conn->error);
+        exit;
+      }
+
+      while($note = $result->fetch_assoc()) {
+        $notes[]=$note;
+      }
+
+      $result->close();
+    }
     closeConn($conn);
     return $notes;
   }

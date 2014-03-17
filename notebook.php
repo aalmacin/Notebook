@@ -1,10 +1,10 @@
 <?php
   include_once('data/note.php');
-  $notes = getNotes();
   session_start();
   if(!isset($_SESSION['userId'])) {
     header('Location: index.php');
   }
+  $notes = getNotes();
 ?>
 <!DOCTYPE html>
 <html lang="en">
