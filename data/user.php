@@ -46,6 +46,17 @@
     }
   }
 
+  function checkUserLoginCredentials($username, $password) {
+    $conn = startConn();
+    $matched = false;
+    foreach(getUsers() as $user) {
+      if($user['Username'] == $username && $user['Password'] == sha1($password)) {
+        $matched = true;
+      }
+    }
+    return $matched;
+  }
+
   function logoutUser() {
     session_start();
     session_destroy();

@@ -73,4 +73,39 @@ $(document).on('pageshow', '#main', function() {
       });
     }
   });
+
+  $("#realLoginForm #loginBtn").click(function() {
+    var username = $('#loginUsername').val();
+    var password = $('#loginPassword').val();
+    $('.error').hide();
+    if(!username || !password) {
+      $('.requiredUsernamePassword.error').show();
+    } else {
+      $.post('api/checkLogin.php', {username: username, password: password}, function(data) {
+        if(data == "Matched") {
+          $('#realLoginForm').submit();
+        } else if (data == "Not matched") {
+          $(".loginNotMatched").show();
+        } else {
+          console.log("An error has occured.");
+        }
+      });
+    }
+    return false;
+  });
+
+  $("#realRegistrationForm #signUpBtn").click(function() {
+    var username = $('#registerUsername').val();
+    var password = $('#registerPassword').val();
+    var confPassword = $('#registerConfPassword').val();
+    $('.error').hide();
+    if(!username || !password || !confPassword) {
+      $('.requiredUsernamePasswordConfPassword.error').show();
+    } else if (password != confPassword) {
+      $('.notMatchPasswordConfirmation.error').show();
+    } else {
+      $("#realRegistrationForm").submit();
+    }
+    return false;
+  });
 });

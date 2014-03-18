@@ -32,6 +32,11 @@
   <head>
     <meta charset="utf-8">
     <title>BR Notebook</title>
+<!--
+    <script src="lib/jquery.js"></script>
+    <script src="lib/jqueryMobile.js"></script>
+    <link rel="stylesheet" href="lib/jqueryMobile.css">
+-->
     <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="//code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
@@ -43,13 +48,15 @@
       <div id="loginForm">
         <h3 class="ui-bar ui-bar-a ui-corner-all">Login</h3>
         <div class="ui-body">
-          <form name="login" data-ajax="false" method="post">
+          <p class="requiredUsernamePassword error">*Username and password must not be empty.</p>
+          <p class="loginNotMatched error">*Username and password combination did not match any combination in the db.</p>
+          <form name="login" id="realLoginForm" data-ajax="false" method="post">
             <label for="username">Username</label>
             <input id="loginUsername" type="text" name="loginUsername" />
             <label for="password">Password</label>
             <input id="loginPassword" type="password" name="loginPassword" />
             <input type="hidden" name="type" value="login" />
-            <input type="submit" value="Login" rel="external" data-ajax="false" />
+            <input id="loginBtn" type="submit" value="Login" rel="external" data-ajax="false" />
           </form>
           <a href='#' id="registrationLink">Click for registration form</a>
         </div>
@@ -57,7 +64,9 @@
       <div id="registrationForm">
         <h3 class="ui-bar ui-bar-a ui-corner-all">Register</h3>
         <div class="ui-body">
-          <form name="registration" data-ajax="false" method="post">
+          <p class="requiredUsernamePasswordConfPassword error">*Username, Password, and Confirmation must not be empty.</p>
+          <p class="notMatchPasswordConfirmation error">*Password and Confirmation did not match.</p>
+          <form name="registration" id="realRegistrationForm" data-ajax="false" method="post">
             <label for="username">Username</label>
             <input id="registerUsername" type="text" name="registerUsername" />
             <label for="password">Password</label>
