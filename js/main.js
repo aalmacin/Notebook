@@ -34,6 +34,7 @@ $(document).on('pageshow', '#main', function() {
 
   $('#addNoteButton .addNote').click(function() {
     $("#noteOverlay").show();
+    $("#noteOverlay .newNote").focus();
     $('#deleteNote').hide();
   });
 
@@ -46,6 +47,7 @@ $(document).on('pageshow', '#main', function() {
     var txtArea = $("#noteOverlay .newNote");
     txtArea.data('id', $(this).data("id"));
     var txt = $($(this).find("span.noteTxt")).text();
+    $("#noteOverlay .newNote").focus();
     $("#noteOverlay .newNote").val(txt);
     $('#deleteNote').show();
   });
